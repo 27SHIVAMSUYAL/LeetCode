@@ -9,7 +9,6 @@ public:
         for (int i = 0; i < row; i++) {
 
             for (int j = 0; j < col; j++) {
-
   
                 arr.push_back(grid[i][j]);
                 if(grid[i][j]%x != remainder){
