@@ -5,7 +5,7 @@ public:
 
         int count = 0 ;
         vector<int>arr;
-        int remainder =  remainder =grid[0][0]%x;
+        int remainder =grid[0][0]%x;
         for (int i = 0; i < row; i++) {
 
             for (int j = 0; j < col; j++) {
