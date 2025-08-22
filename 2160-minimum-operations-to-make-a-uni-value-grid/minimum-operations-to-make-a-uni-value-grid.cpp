@@ -18,7 +18,8 @@ public:
         }
 
         sort(arr.begin(),arr.end());
-        int median = arr[arr.size()/2];
+        int mid = arr.size()/2;
+        int median = arr[mid];
 
         for(int i = 0 ; i < arr.size();i++){
             count += abs(arr[i]-median)/x;
