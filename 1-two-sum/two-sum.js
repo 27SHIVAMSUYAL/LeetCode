@@ -9,7 +9,7 @@ var twoSum = function(nums, target) {
 
     let l = nums.length;
 
-    var um = {};
+    let um = new Map();
 
     for( let i =0 ; i < l;i++){
         if(target - nums[i] in um){
