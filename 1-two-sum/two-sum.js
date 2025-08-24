@@ -4,14 +4,20 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
- let l = nums.length;
-    for( let i = 0 ; i < l-1 ; i++){
-        for( let j = i+1; j < l;j++){
-            if(nums[i] + nums[j] === target){
-                return [i , j];
-            }
+    
+
+
+    let l = nums.length;
+
+    var um = {};
+
+    for( let i =0 ; i < l;i++){
+        if(target - nums[i] in um){
+        return [i,um[target-nums[i]]];
+        }else {
+            um[nums[i]]=i;
         }
     }
-    return [];
-    
+
+    return ;
 };
