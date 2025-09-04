@@ -2,34 +2,28 @@ class Solution {
 public:
     int minimumOperations(vector<int>& nums) {
 
+        bool pass = false;
+
+        int l = nums.size();
         set<int> check;
-        int count = 0;
-        int start = 0 ;
-          bool pass = false;
 
+        for(int i = l-1 ; i >=0 ; i--){
 
-        while( start < nums.size() && pass == false){
+            if(check.find(nums[i]) != check.end()){
 
-
-            for(int i = start; i < nums.size();i++){
-                if(check.find(nums[i]) != check.end()){
-
-                    start += 3;
-                    count++;
-                    check.clear();
-                    pass = false;
-                    break;
-
+                if( l <= 3 ){
+                    return 1;
                 }else{
-                    check.insert(nums[i]);
-                    pass = true;
+                         return (i+1)%3 == 0 ? (i+1)/3 : (i+1)/3 + 1;
                 }
+               
+            }else{
+                check.insert(nums[i]);
             }
-           
 
         }
 
-        return count ;
+        return 0;
         
     }
 };
