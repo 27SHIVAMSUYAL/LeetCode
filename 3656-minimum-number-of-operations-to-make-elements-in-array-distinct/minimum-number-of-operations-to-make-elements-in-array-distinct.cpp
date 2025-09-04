@@ -1,11 +1,8 @@
 class Solution {
 public:
     int minimumOperations(vector<int>& nums) {
-
-        bool pass = false;
-
         int l = nums.size();
-        set<int> check;
+        unordered_set<int> check;
 
         for(int i = l-1 ; i >=0 ; i--){
 
