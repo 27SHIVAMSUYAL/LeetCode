@@ -11,11 +11,9 @@ public:
 
             if(check.find(nums[i]) != check.end()){
 
-                if( l <= 3 ){
-                    return 1;
-                }else{
-                         return (i+1)%3 == 0 ? (i+1)/3 : (i+1)/3 + 1;
-                }
+              
+                    return (i+1)%3 == 0 ? (i+1)/3 : i+1 < 3 ? 1 : (i+1)/3 + 1;
+                
                
             }else{
                 check.insert(nums[i]);
