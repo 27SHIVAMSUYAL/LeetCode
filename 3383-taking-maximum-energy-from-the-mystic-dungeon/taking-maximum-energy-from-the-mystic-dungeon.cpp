@@ -19,7 +19,7 @@ public:
         int sum = 0 ;
         int l = energy.size();
 
-         if(i+k < l && dp.find(i+k) != dp.end()){
+         if(i+k < l ){
                 sum = energy[i] + dp[i+k];
                 return dp[temp]= sum;
             }
