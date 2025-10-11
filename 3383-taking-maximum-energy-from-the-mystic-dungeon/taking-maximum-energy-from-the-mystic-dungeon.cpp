@@ -24,10 +24,10 @@ public:
                 return dp[temp]= sum;
             }
 
-        while( i < l ){
-            sum += energy[i];
-            i = i+k ;
-        }
-        return dp[temp] = sum;
+        // while( i < l ){
+        //     sum += energy[i];
+        //     i = i+k ;
+        // }
+        return dp[temp] = energy[i];
     }
 };
