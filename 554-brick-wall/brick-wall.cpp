@@ -4,7 +4,7 @@ public:
 
         int totalWidth = wall.size();
         int totalHeight = wall.size();
-        long long sum;
+        uint sum;
         int maxi = 0;
         unordered_map<int, int> map;
 
