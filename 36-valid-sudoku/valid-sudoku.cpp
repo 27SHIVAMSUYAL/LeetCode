@@ -9,13 +9,13 @@ public:
 
 
 
-        for (int i = 0; i < board.size(); i++) {
+        for (int i = 0; i < 9; i++) {
             if (checkRow(i, board) == false) {
                 return false;
             }
         }
 
-        for (int j = 0; j < board[0].size(); j++) {
+        for (int j = 0; j < 9; j++) {
             if (checkCol(j, board) == false) {
                 return false;
             }
@@ -35,7 +35,7 @@ public:
 
         vector<int> count(10, 0);
 
-        for (int j = 0; j < board[i].size(); j++) {
+        for (int j = 0; j < 9; j++) {
 
             if (board[i][j] == '.') {
                 continue;
@@ -57,7 +57,7 @@ public:
 
         vector<int> count(10, 0);
 
-        for (int i = 0; i < board.size(); i++) {
+        for (int i = 0; i < 9; i++) {
 
             if (board[i][j] == '.') {
                 continue;
@@ -78,11 +78,9 @@ public:
                   int toCheck) {
 
         vector<int> count(10, 0);
-        int i = toCheckVec[toCheck][0];
-        int j = toCheckVec[toCheck][1];
 
-        for (int row = i; row < i + 3; row++) {
-            for (int col = j; col < j + 3; col++) {
+        for (int row = toCheckVec[toCheck][0]; row < toCheckVec[toCheck][0] + 3; row++) {
+            for (int col = toCheckVec[toCheck][1]; col < toCheckVec[toCheck][1] + 3; col++) {
 
                 if (board[row][col] == '.') {
                     continue;
