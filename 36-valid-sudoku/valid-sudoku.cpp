@@ -2,102 +2,100 @@ class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
 
-        bool rows = checkRows(board);
-        if (rows == false) {
-            return false;
+        vector<vector<int>> toCheckVec = {{0, 0}, {0, 3}, {0, 6},
+                                          {3, 0}, {3, 3}, {3, 6},
+                                          {6, 0}, {6, 3}, {6, 6}};
+        int toCheck = 0;
+
+
+
+        for (int i = 0; i < board.size(); i++) {
+            if (checkRow(i, board) == false) {
+                return false;
+            }
         }
 
-        bool cols = checkCols(board);
-        if (cols == false) {
-            return false;
+        for (int j = 0; j < board[0].size(); j++) {
+            if (checkCol(j, board) == false) {
+                return false;
+            }
+        }
+
+        while(toCheck != 9) {
+            if (checkBox(board, toCheckVec, toCheck) == false) {
+                return false;
+            }
+            toCheck++;
+        }
+
+        return true;
+    }
+
+    bool checkRow(int i, vector<vector<char>>& board) {
+
+        vector<int> count(10, 0);
+
+        for (int j = 0; j < board[i].size(); j++) {
+
+            if (board[i][j] == '.') {
+                continue;
+            }
+
+            if (count[board[i][j] - '0'] == 1) {
+                return false;
+            } else {
+                count[board[i][j] - '0']++;
+            }
+        }
+
+     
+        return true;
+    }
+
+    bool checkCol(int j, vector<vector<char>>& board) {
+      
+
+        vector<int> count(10, 0);
+
+        for (int i = 0; i < board.size(); i++) {
+
+            if (board[i][j] == '.') {
+                continue;
+            }
+
+            if (count[board[i][j] - '0'] == 1) {
+                return false;
+            } else {
+                count[board[i][j] - '0']++;
+            }
         }
 
        
-        bool box = checkBox(board);
-
-        if (box == false) {
-            return false;
-        }
-
         return true;
     }
 
-    bool checkRows(vector<vector<char>>& board) {
-        int rows = board.size();
-        int cols = board[0].size();
-    
-        for (int i = 0; i < rows; i++) {
-            vector<bool> check(10, false);
-            for (int j = 0; j < cols; j++) {
+    bool checkBox(vector<vector<char>>& board, vector<vector<int>>& toCheckVec,
+                  int toCheck) {
 
-                if(board[i][j] == '.'){
+        vector<int> count(10, 0);
+        int i = toCheckVec[toCheck][0];
+        int j = toCheckVec[toCheck][1];
+
+        for (int row = i; row < i + 3; row++) {
+            for (int col = j; col < j + 3; col++) {
+
+                if (board[row][col] == '.') {
                     continue;
                 }
-                int num = board[i][j] - '0';
-                if (check[num] == false) {
-                    check[num] = true;
-                } else if (check[num] == true) {
+
+                if (count[board[row][col] - '0'] == 1) {
                     return false;
+                } else {
+                    count[board[row][col] - '0']++;
                 }
-            }
-        }
-        return true;
-    }
-
-    bool checkCols(vector<vector<char>>& board) {
-        int rows = board.size();
-        int cols = board[0].size();
-    
-        for (int i = 0; i < cols; i++) {
-            vector<bool> check(10, false);
-            for (int j = 0; j < rows; j++) {
-                if(board[j][i] == '.'){
-                    continue;
-                }
-                     int num = board[j][i] - '0';
-                if (check[num] == false) {
-                    check[num] = true;
-                } else if (check[num] == true) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    bool checkBox(vector<vector<char>>&board){
-
-        int rows = board.size();
-        int cols = board[0].size();
-
-
-        for(int i = 0 ; i < rows ; i=i+3){
-            for(int j = 0 ; j < cols ; j=j+3){
-
-                vector<bool> check(10,false);
-
-                   for(int r = i ; r < i+3;r++){
-                    for(int c=j ; c<j+3;c++){
-
-                        if(board[r][c] == '.'){
-                    continue;
-                }
-                int num = board[r][c] - '0';
-                        if(check[num]==false){
-                            check[num] = true;
-                        }else if(check[num] == true){
-                            return false;
-                        }
-                    }
-                   } 
-
-
-
             }
         }
 
         return true;
-        
     }
-
 };
