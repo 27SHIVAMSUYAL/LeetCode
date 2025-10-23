@@ -8,7 +8,7 @@ public:
         while (s.size() > 2) {
             for (int i = 1; i < s.size(); i++) {
                 num3 = (s[i] - '0' + s[i - 1] - '0') % 10;
-                ans += num3;
+                ans += num3 - '0';
             }
 
             s = ans;
