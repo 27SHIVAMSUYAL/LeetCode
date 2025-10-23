@@ -43,7 +43,7 @@ public:
         return;
     }
 
-    pair<int, int> checkLive(int row, int col, vector<vector<int>> board) {
+    pair<int, int> checkLive(int row, int col, vector<vector<int>> & board) {
 
         int live = 0;
         int non = 0;
