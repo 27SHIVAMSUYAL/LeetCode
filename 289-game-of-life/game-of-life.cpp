@@ -2,8 +2,8 @@ class Solution {
 public:
     void gameOfLife(vector<vector<int>>& board) {
 
-        int row = board.size(), col = board[0].size(),  live, non , check =1;
-        pair<int, int> count;
+        int row = board.size(), col = board[0].size();
+       int live ;
 
         vector<vector<int>> copy = board;
 
@@ -12,11 +12,8 @@ public:
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
 
-                count = checkLive(i, j, copy);
+                live = checkLive(i, j, copy);
 
-                live = count.first;
-                non = count.second;
-                cout<<" live " << live << " non " << non <<'\n';
 
                 if (board[i][j] == 1) {
 
@@ -43,10 +40,10 @@ public:
         return;
     }
 
-    pair<int, int> checkLive(int row, int col, vector<vector<int>> & board) {
+   int checkLive(int row, int col, vector<vector<int>> & board) {
 
         int live = 0;
-        int non = 0;
+    
         int curRow, curCol;
 
         vector<int> sign = {1, -1, 0};
@@ -64,13 +61,11 @@ public:
                     curCol < board[0].size()) {
                     if (board[curRow][curCol] == 1) {
                         live++;
-                    } else {
-                        non++;
-                    }
+                    } 
                 }
             }
         }
 
-        return {live, non};
+        return live ;
     }
 };
