@@ -1,33 +1,23 @@
 class Solution {
 public:
-    bool hasSameDigits(string sh) {
+    bool hasSameDigits(string s) {
 
-        uint  num1 , num2 , num3;
+       int num3;
         string ans = "";
 
-        string s = sh;
+        while (s.size() > 2) {
+            for (int i = 1; i < s.size(); i++) {
+                num3 = (s[i] - '0' + s[i - 1] - '0') % 10;
+                ans += num3;
+            }
 
-
-    while(s.size() > 2){
-    for(int i = 1 ; i < s.size() ; i++){
-            num1 = s[i] - '0';
-            num2 = s[i-1] - '0';
-            num3 = (num1 + num2)%10;
-            ans += num3; 
+            s = ans;
+            ans = "";
         }
-
-        s = ans;
-        ans = "";
-       
-
-
-}
-       if( s[0] == s[s.size()-1]){
-        return true;
-       }else {
-        return false;
-       }
-       
-
+        if (s.front() == s.back()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 };
