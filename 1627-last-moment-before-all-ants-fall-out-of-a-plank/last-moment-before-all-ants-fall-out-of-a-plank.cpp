@@ -4,11 +4,11 @@ public:
 
         int time = 0 ;
 
-        for( int i : left){
+        for( int &i : left){
             time = max(time , i);
         }
 
-         for( int i : right){
+         for( int &i : right){
             time = max(time ,n - i);
         }
 
