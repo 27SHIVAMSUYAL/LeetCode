@@ -14,7 +14,7 @@ public:
             s = ans;
             ans = "";
         }
-        if (s.front() == s.back()) {
+        if (s[0] == s[1]) {
             return true;
         } else {
             return false;
