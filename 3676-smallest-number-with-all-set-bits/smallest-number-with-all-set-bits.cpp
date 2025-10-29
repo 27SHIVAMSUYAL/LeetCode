@@ -2,42 +2,19 @@ class Solution {
 public:
     int smallestNumber(int n) {
 
-        string binary = "";
-        int ans=0;
-        int digit;
+        string bit = bitset<16>(n).to_string();
+        int flag = 0 ;
 
-        while (n > 0) {
-            digit = n % 2;
-            binary = to_string(digit) + binary;
-            n = n / 2;
-        }
-
-        cout << "binary" << binary << '\n';
-
-        for (char& ch : binary) {
-            ch = '1';
-        }
-
-        cout << "binary" << binary << '\n';
-
-        int power = 0;
-        int num = stoi(binary);
-
-        cout << "num" << num << '\n';
-
-        while (num > 0) {
-
-            digit = num % 10;
-            cout<< "digit" << digit << '\n';
-            if( digit == 1){
-                 ans += pow(2, power);
+        cout<<"bit " << bit << '\n';
+        for( char &ch : bit){
+            if(flag ==1){
+                ch ='1';
+            }else if(ch == '1'){
+                flag = 1;
             }
-        
-            power++;
-            num = num / 10;
         }
-        cout << "ans" << ans << '\n';
 
-        return ans;
+        return stoi(bit , 0 , 2);
+        
     }
 };
