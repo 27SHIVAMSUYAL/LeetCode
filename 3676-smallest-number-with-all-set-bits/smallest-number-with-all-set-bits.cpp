@@ -14,11 +14,9 @@ public:
         binary = to_string(digit) + binary;
         n = n/2;
        }
-         cout<<"binary " << binary << '\n';
        int power = 0;
        int num = stoi(binary);
-           cout<<"num" << num << '\n';
-
+       
        while( num > 0 ){
         digit = num%10;
 
