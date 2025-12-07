@@ -6,10 +6,6 @@ public:
             return (high - low) / 2;
         }
 
-        if( low%2 == 0){
-            (high - low) / 2  + 1;
-        }
-
         return  (high - low) / 2  + 1;
         
     }
