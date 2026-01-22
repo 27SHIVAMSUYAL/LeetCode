@@ -15,15 +15,10 @@ public:
 
         if(root==nullptr){return 0;}
 
-        int temp = 0;
-        if(low <= root->val && root->val <= high){
-            temp = root->val;
-        }
-
         int left = rangeSumBST(root->left , low , high );
         int right = rangeSumBST(root->right , low , high );
-
-        return left + right + temp;
+        
+        return left + right + ( (low <= root->val && root->val <= high)?root->val:0 );
         
     }
 
