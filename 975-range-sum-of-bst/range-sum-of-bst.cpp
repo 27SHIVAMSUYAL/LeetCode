@@ -15,13 +15,13 @@ public:
 
 
         queue<TreeNode*>queue;
-
         queue.push(root);
         int sum = 0;
+        TreeNode* temp;
 
         while(!queue.empty()){
 
-                TreeNode* temp = queue.front();
+                temp = queue.front();
                 queue.pop();
 
                 if(low <= temp->val && temp->val <= high ){
