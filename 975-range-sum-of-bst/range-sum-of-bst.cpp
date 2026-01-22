@@ -13,32 +13,26 @@ class Solution {
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
 
-
-        queue<TreeNode*>queue;
-        queue.push(root);
         int sum = 0;
-        TreeNode* temp;
 
-        while(!queue.empty()){
-
-                temp = queue.front();
-                queue.pop();
-
-                if(low <= temp->val && temp->val <= high ){
-                    sum += temp->val;
-                }
-                
-                if(temp->left != nullptr){
-                    queue.push(temp->left);
-                }
-                if(temp->right != nullptr){
-                    queue.push(temp->right);
-                }
-
-
-        }
+        solve(root , low , high , sum);
 
         return sum;
         
+    }
+
+    void solve(TreeNode* root , int &low , int &high , int &sum){
+
+        if(root==nullptr){return;}
+
+        if(low <= root->val && root->val <= high){
+            sum += root->val;
+        }
+
+        solve(root->left , low , high , sum);
+        solve(root->right , low , high , sum);
+
+        return;
+
     }
 };
