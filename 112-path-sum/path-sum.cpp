@@ -15,25 +15,25 @@ public:
 
         bool ans = false;
 
-      solve( root , targetSum , 0 , ans);
+      solve( root , targetSum , ans);
 
       return ans;
         
     }
 
-    void solve( TreeNode* root , int targetSum , int sum , bool &ans){
+    void solve( TreeNode* root , int targetSum  , bool &ans){
 
         if(root == nullptr || ans == true){
             return ;
         }
 
-        sum += root->val;
+        targetSum -= root->val;
 
-        solve(root->left , targetSum , sum , ans);
+        solve(root->left , targetSum  , ans);
 
-        solve(root->right , targetSum , sum , ans);
+        solve(root->right , targetSum  , ans);
 
-        if(sum == targetSum && root->left == nullptr && root->right == nullptr){
+        if( targetSum == 0 && root->left == nullptr && root->right == nullptr){
             ans = true;
         }
 
