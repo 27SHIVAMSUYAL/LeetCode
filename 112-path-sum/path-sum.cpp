@@ -13,31 +13,26 @@ class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
 
-        bool ans = false;
 
-      solve( root , targetSum , ans);
 
-      return ans;
+      return solve( root , targetSum );
         
     }
 
-    void solve( TreeNode* root , int targetSum  , bool &ans){
+    bool solve( TreeNode* root , int targetSum ){
 
-        if(root == nullptr || ans == true){
-            return ;
+        if(root == nullptr){
+            return false;
         }
 
         targetSum -= root->val;
 
-        solve(root->left , targetSum  , ans);
-
-        solve(root->right , targetSum  , ans);
 
         if( targetSum == 0 && root->left == nullptr && root->right == nullptr){
-            ans = true;
+            return true;
         }
 
-        return ;
+        return solve(root->left , targetSum ) || solve(root->right , targetSum  );
 
         
     }
