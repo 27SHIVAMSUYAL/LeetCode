@@ -24,8 +24,6 @@ public:
             n = (n-1)/2;
         }
       }
-
-      cout<< "binary number -> " << binary;
       return distance;
 
         
