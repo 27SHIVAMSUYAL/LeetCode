@@ -23,31 +23,47 @@ public:
     int maxDepth(Node* root) {
 
 
-        int ans = 0 ;
 
-        solve(root , ans , 0);
+        int ans = 1 ;
+
+        if( root == NULL){
+            return 0;
+        }
+
+        queue<pair<Node* , int > > que;
+        que.push( { root , 1 } );
+   
+
+        while( !que.empty() ){
+
+            
+
+            Node* hero = que.front().first;
+            int currentCount = que.front().second;
+
+            ans = ans > currentCount ? ans : currentCount;
+
+            que.pop();
+
+            // if(  hero->children.size() > 0 ){
+
+            
+
+            for( int i = 0 ; i < hero->children.size() ; i++){
+                if( hero->children[i] != nullptr){
+                que.push( { hero->children[i] , currentCount+1 } );
+                }
+            }
+
+            // }
+
+        }
+
 
         return ans;
         
     }
 
 
-    void solve( Node* root , int &ans , int count){
 
-        if( root == nullptr){
-            return ;
-        }
-
-            count++;
-
-            ans = ans > count ? ans :count ;
-
-            for( int i = 0 ; i < root->children.size() ; i++){
-                solve( root->children[i] , ans  , count);
-            }
-
-
-        return ;
-
-    }
 };
