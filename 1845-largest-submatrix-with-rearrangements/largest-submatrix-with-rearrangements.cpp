@@ -7,6 +7,7 @@ public:
 
         vector<vector<int>> cumilativeOnes(matrix.size() , vector<int>(matrix[0].size() , -1 ));
 
+        vector<int> row;
         int count = 0 ;
            int finalAnswer = INT_MIN;
            int ans = INT_MIN;
@@ -28,7 +29,6 @@ public:
 
       
 
-        vector<int> row;
 
         for( int i = 0 ; i < matrix.size()  ; i++){
             for( int j = 0 ; j < matrix[0].size() ; j++){
