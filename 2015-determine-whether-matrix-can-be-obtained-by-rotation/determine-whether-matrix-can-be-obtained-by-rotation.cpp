@@ -2,11 +2,16 @@ class Solution {
 public:
     bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
 
-        for (int i = 0; i < 4; i++) {
+
+            if( check(mat , target) ) {
+                return true;
+            }
+              
+        for (int i = 0; i < 3; i++) {
+
+            rotate(mat);
             if (check(mat, target)) {
                 return true;
-            } else {
-                rotate(mat);
             }
         }
 
