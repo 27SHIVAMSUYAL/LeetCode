@@ -8,13 +8,13 @@ public:
            
            switch(ch){
             case 'R':
-                xAxis++;
+            xAxis++;
                 break;
             case 'L':
-                xAxis--;
+            xAxis--;
                 break;
             case 'U':
-                yAxis++;
+            yAxis++;
                 break;
             default:
                 yAxis--;
