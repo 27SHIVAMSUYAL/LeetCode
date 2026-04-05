@@ -18,9 +18,6 @@ public:
             
         }
 
-        if( xAxis == 0 && yAxis == 0){
-            return true;
-        }
-        return false;
+    return( xAxis == 0 && yAxis == 0);
     }
 };
