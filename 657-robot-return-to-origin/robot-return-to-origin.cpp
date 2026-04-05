@@ -5,16 +5,21 @@ public:
         int xAxis = 0 ,yAxis = 0;
 
         for( char ch : moves){
-            if( ch == 'R'){
+           
+           switch(ch){
+            case 'R':
                 xAxis++;
-            }else if (ch == 'L') {
-                    xAxis--;
-            }else if (ch == 'U'){
-                    yAxis++;
-            }
-            else {
-                    yAxis--;
-            }
+                break;
+            case 'L':
+                xAxis--;
+                break;
+            case 'U':
+                yAxis++;
+                break;
+            default:
+                yAxis--;
+                break;
+           }
             
         }
 
