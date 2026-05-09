@@ -4,7 +4,7 @@ public:
         sort(nums.begin()  , nums.end());
         int n = nums.size();
 
-        int maxi = INT_MIN , mini = INT_MAX;
+      
         int ans = INT_MAX;
 
         for( int i = 0 ; i <= n - k ; i++){
