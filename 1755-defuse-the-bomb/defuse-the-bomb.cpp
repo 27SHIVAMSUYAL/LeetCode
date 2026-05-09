@@ -11,21 +11,23 @@ public:
         int n = code.size();
         int i;
 
-    
+        int tempk = k;
 
         if (k > 0) {
-            for (i = 1; i <= k; i++) {
-                sum += code[i];
+            while(k > 0){
+                sum += code[((k%n)+n)%n];
+                k--;
             }
         } else {
 
              
-            for (i = n - 1; i >= n + k; i--) {
-                sum += code[i];
-               
+            while( k < 0){
+                sum += code[ ((k%n)+n)%n];
+               k++;
             }
         }
 
+        k = tempk;
 
   
     vector<int> answer;
@@ -34,14 +36,12 @@ public:
         answer.push_back(sum);
 
         if (k > 0) {
-            sum -= code[(i + 1) % n];
-                sum += code[(i+k+1)%n];
+            sum -= code[((i + 1) % n + n )%n];
+                sum += code[((i+k+1)%n + n )%n];
         } else {
        
-            sum -= code[(n + k  + i) % n];
-        
-         
-            sum += code[i % n];
+            sum -= code[((n + k  + i) % n + n )%n];
+            sum += code[((i % n)+n)%n];
         }
     }
 
