@@ -6,23 +6,22 @@ public:
 
         // brute force
         for( int i = 0 ; i < s.size() ; i++){
+            unordered_set<char>sett;
             for( int j = 1 ; j <= s.size() - i ; j++){
-                
-                    check(answer , s.substr(i , j));
+                    
+                    check(answer , s.substr(i , j ) , sett);
             }
+            sett.clear();
         }
+
 
         return answer;
         
     }
 
-    void check(string & answer , string substring){
+    void check(string & answer , string substring , unordered_set<char> & sett){
             cout<< substring << "\n";
-        unordered_set<char>sett;
-
-        for(char ch:substring){
-            sett.insert(ch);
-        }
+            sett.insert(substring[substring.size() - 1]);
 
         for(char ch:substring){
             if(( islower(ch) && sett.find(toupper(ch)) != sett.end())  || ( isupper(ch) && sett.find(tolower(ch)) != sett.end()) ){
