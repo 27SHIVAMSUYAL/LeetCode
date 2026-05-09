@@ -16,7 +16,7 @@ public:
         
     }
 
-    void check(string s , int i , int j , int &answer){
+    void check(string &s , int i , int j , int &answer){
         unordered_set<char> sett;
         cout<< "\n";
         while(i <= j ){
