@@ -33,9 +33,6 @@ public:
 
         }
         int ll , rr ;
-        cout << "flag -> " << flag << "\n";
-        cout << "left -> " << left << "\n";
-        cout << "right -> " << right << "\n";
         if(flag == -1){
             for( int i = 0 ; i < k ; i++){
                 answer.push(arr[i]);
@@ -60,7 +57,7 @@ public:
                 rr = INT_MAX;
                }
 
-               cout<<"rr" << rr << "ll" << ll << "\n";
+               
 
                 if( rr == INT_MAX && ll != INT_MAX){
                     answer.push(arr[left]);
