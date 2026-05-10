@@ -5,15 +5,13 @@ public:
       
 
         vector<string>answer;
-          if(s.size() < 10){
-            return answer;
-        }
+       
 
         unordered_map<string,int>mapp;
 
         string ss;
 
-        for( int i = 0 ; i <= s.size()-10 ; i++){
+        for( int i = 0 ; i <= ((s.size()-10)%s.size() + s.size())%s.size() ; i++){
             ss = s.substr(i, 10);
             auto it = mapp.find(ss);
 
