@@ -2,99 +2,36 @@ class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
 
+        int right = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
+        int left = right - 1;
 
-        // find x position if it exists in the array or its possible possition 
+        vector<int> answer;
 
-        // left and right pointers go in both directions till k number are got 
+        cout<<"left " << left << " right " << right << "\n";
 
-        // if left or right reach end point stop that pointer 
+        while (answer.size() < k) {
 
-        // eg [3 , 5 , 6 , 8 , 29 , 89 , 4839 , 980 , 445460]
-        // k = 5 ,  x = 56;
-        priority_queue<int , vector<int> , greater<int> >answer;
-        int left , right , flag = -1;
-        for( int i = 0 ; i < arr.size(); i++){
-            if( arr[i] == x){
-                flag = 0;
-                answer.push(arr[i]);
-                left = i-1;
-                right = i+1;
+            if (left < 0 && right >= arr.size()) {
                 break;
-            }
-            else if ( arr[i] < x && i+1 < arr.size() && x < arr[i+1]  ){
-                flag = 0;
-                left = i;
-                right = i+1;
-                break;
-            }else if ( arr[i] < x){
-               flag = 1;
-            }
-
-
-        }
-        int ll , rr ;
-        if(flag == -1){
-            for( int i = 0 ; i < k ; i++){
-                answer.push(arr[i]);
-            }
-        }else if (flag == 1){
-            for( int i = arr.size()-k ; i < arr.size() ; i++){
-                answer.push(arr[i]);
-            }
-        }else{
-
-            while(answer.size() < k){
-
-               if(left >= 0){
-                ll = arr[left];
-               }else{
-                ll = INT_MAX;
-               }
-
-               if(right <= arr.size() - 1){
-                rr = arr[right];
-               }else{
-                rr = INT_MAX;
-               }
-
-               
-
-                if( rr == INT_MAX && ll != INT_MAX){
-                    answer.push(arr[left]);
-                    left--;
-                    continue;
-                }else if ( ll == INT_MAX && rr != INT_MAX ){
-                    answer.push(arr[right]);
-                    right++;
-                     continue;
-                }else if (ll == INT_MAX && rr == INT_MAX){
-                    break;
-                }
-               if(  rr-x < x-ll){
-                answer.push(arr[right]);
+            } else if (left < 0 ) {
+                answer.push_back(arr[right]);
                 right++;
-               }else{
-                answer.push(arr[left]);
+               
+            } else if (right >= arr.size()) {
+                answer.push_back(arr[left]);
                 left--;
-               }
-
-
-
+              
+            }else if(   abs(arr[right] - x) <  abs(arr[left] - x)   ) {
+                answer.push_back(arr[right]);
+                right++;
+            } else {
+                answer.push_back(arr[left]);
+                left--;
             }
-
         }
 
-        vector<int>ans;
+        sort(answer.begin(), answer.end());
 
-        while(answer.size() > 0){
-            ans.push_back(answer.top());
-            answer.pop();
-        }
-
-        return ans;
-
-
-
-        
+        return answer;
     }
 };
